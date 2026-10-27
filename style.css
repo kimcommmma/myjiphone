@@ -471,9 +471,9 @@ body:not(.in) #status{text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .ig-arrow{display:none!important}
 .ig-track{user-select:none;-webkit-user-select:none}
 .ig-track img{-webkit-user-drag:none;user-drag:none}
-.ig-track{scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;will-change:scroll-position;transform:translateZ(0)}
-.ig-slide{scroll-snap-stop:always;contain:layout paint;transform:translateZ(0);backface-visibility:hidden}
-.ig-slide img,.ig-slide .pic{will-change:transform;backface-visibility:hidden}
+.ig-track{scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.ig-slide{scroll-snap-stop:always;contain:layout paint}
+
 
 /* ===== 전화 (iOS 최근 통화) ===== */
 .ph{display:contents}
@@ -573,3 +573,12 @@ body.full{background:#000}
 body.full #stage{display:block;height:100dvh}
 body.full #phone{position:absolute;left:0;top:0;width:368px;border:0;border-radius:0;box-shadow:none;transform-origin:0 0}
 body.full #screen,body.full #app{border-radius:0}
+body.full #island{top:14px;width:122px;height:35px;margin-left:-61px;border-radius:22px}
+body.full #status{top:19px;padding:0 38px;font-size:17px}
+body.full #home{padding:92px 22px 0}
+body.full #grid{gap:30px 8px}
+body.full .ico{font-size:12px}
+body.full .ico i{width:66px;height:66px}
+body.full #dock{left:12px;right:12px;bottom:34px;height:96px;border-radius:34px}
+body.full #dock .ico i{width:68px;height:68px}
+body.full #app{padding-top:64px}

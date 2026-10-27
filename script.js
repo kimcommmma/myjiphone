@@ -8,7 +8,7 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 (P.posts || []).forEach(x => { if (x.likedByRandom) x.likedBy = shuffle(P.contacts.filter(c => !c.hideStory && c.handle !== x.user).map(c => c.handle)).slice(0, x.likedByRandom); if (x.fixedComments || x.randomComments) { const pl = [...(x.commentPool || P.commentPool || []), ...(x.noFan ? [] : (P.fanPool || []))]; const n = x.randomComments || 0, k = n >= 4 ? 1 + Math.floor(Math.random() * 2) : 0, en = shuffle([...(x.enPool || P.enPool || [])]).slice(0, k); x.commentsList = [...(x.fixedComments || []), ...shuffle([...shuffle(pl).slice(0, n - en.length), ...en])]; } });
 const rich = t => esc(t).replace(/@[\w.]+/g, m => { const h = m.slice(1), ok = h === P.owner.handle || P.contacts.some(c => c.handle === h); return `<span class="tag"${ok ? ` data-go="profile:${h}" style="cursor:pointer"` : ""}>${m}</span>`; });
 const av = (p, cls = "") => `<span class="av ${cls}" style="background:${hue(p.name || p.handle)}">${p.photo ? `<img src="${esc(p.photo)}" alt="" onerror="this.remove()">` : ""}<b>${esc((p.name || p.handle)[0])}</b></span>`;
-const pic = src => src ? `<img class="pic" src="${esc(src)}" alt="" onerror="this.removeAttribute('src')">` : `<div class="pic"></div>`;
+const pic = src => src ? `<img class="pic" loading="lazy" decoding="async" src="${esc(src)}" alt="" onerror="this.removeAttribute('src')">` : `<div class="pic"></div>`;
 
 const app = $("#app"), body = $("#appbody");
 const bind = (sel, fn) => body.querySelectorAll(sel).forEach(el => el.onclick = () => fn(el));
@@ -72,7 +72,7 @@ function insta() {
   const top = () => stack[stack.length - 1];
   const imgs = x => (x.images && x.images.length ? x.images : x.image ? [x.image] : [""]);
   const num = v => v ?? 0;
-  const slide = (src, k) => src ? `<img class="pic" src="${esc(src)}" alt="" onerror="this.removeAttribute('src')">` : `<div class="pic ph">${k}</div>`;
+  const slide = (src, k) => src ? `<img class="pic" loading="lazy" decoding="async" src="${esc(src)}" alt="" onerror="this.removeAttribute('src')">` : `<div class="pic ph">${k}</div>`;
   const prof = h => { const p = person(h); return { ...p, display: p.display || p.name, mine: h === o.handle, posts: P.posts.filter(x => x.user === h) }; };
 
   const post = (x, k) => {
